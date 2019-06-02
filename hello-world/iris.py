@@ -19,3 +19,16 @@ classifier.fit(x_train, y_train)
 # these two prints should be equal values
 print(y_test)
 print(classifier.predict(x_test))
+
+import graphviz 
+dot_data = tree.export_graphviz(classifier, out_file=None) 
+graph = graphviz.Source(dot_data) 
+graph.render("iris") 
+
+dot_data = tree.export_graphviz(classifier, out_file=None, 
+                     feature_names=iris.feature_names,  
+                     class_names=iris.target_names,  
+                     filled=True, rounded=True,  
+                     special_characters=True)  
+graph = graphviz.Source(dot_data)  
+graph
